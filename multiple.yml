@@ -11,4 +11,4 @@
  
     - name: starting mariadb
       service: name=mariadb enabled=yes state=started
-      when: lamp_install | sucsess
+      when: lamp_install | success
