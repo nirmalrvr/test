@@ -1,0 +1,14 @@
+- hosts: localhost
+  become: true
+  tasks:
+    
+    - name: installing multiple packages
+      yum: state=installed name={{item}}
+      with_items:
+        - mariadb
+        - samba
+      register: lamp_install 
+ 
+    - name: starting mariadb
+      service: name=mariadb enabled=yes state=started
+      when: lamp_install | sucsess
