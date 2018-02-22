@@ -1,0 +1,16 @@
+- hosts: localhost
+  become: true
+
+  vars:
+    user_name: aghil
+    description_user: "kundan"
+    home_dir: /home/aghil
+
+  vars_prompt:
+    - name: "user_password"
+      prompt: "Enter a password for the new user"
+      private: yes
+      encrypt: "md5_crypt"
+      salt_size: 7    
+
+      user: name="{{user_name}}" comment="{{description_user}}" password= "{{user_password}}" home="{{home_dir}}" shell= "/bin/bash"

@@ -1,0 +1,11 @@
+- hosts: localhost
+  become: true
+  tasks:
+   
+    - name: install httpd
+      yum: state=installed name=httpd
+      register: httpd_verify
+
+    - name: checking httpd
+      command: httpd -v
+      when: httpd_verify | success

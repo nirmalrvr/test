@@ -1,0 +1,4 @@
+- hosts: group1
+  become: true
+  roles: 
+    - ntp
